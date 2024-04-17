@@ -1,24 +1,24 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asyed <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2024/03/07 16:48:49 by asyed            ###   ########.fr        #
+#    Updated: 2024/04/17 15:14:50 by asyed            ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME		= push_swap
 
 SRCS		= push_swap.c // all .c over here
 
-CC 		= cc
+CC 			= cc
 
 CFLAGS 		= -Wall -Wextra -Werror -g -I.
 
-RM		= rm -f
+RM			= rm -f
 		
 PUSHSWAP 	= $(SRCS:.c=.o) // change every .c to .o
 // @ surpress output, $() is to specify while Makefile to invoke Make and -C indicate where the Makefile is at 
