@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:22:28 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/25 18:32:24 by asyed            ###   ########.fr       */
+/*   Updated: 2024/04/25 21:24:49 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -30,62 +30,81 @@
     // beyond range
     // not int
 
-/*
 
-int checkduplicate(char *intargs)
+
+int gotduplicate(char **intargs) // takes in av in full
 
 {
-    while (*arr)
+    int start;
+    int next;
+
+    start = 0;
+    while (intargs[start] != NULL && intargs[start + 1] != NULL) // 2 string to compare
     {
-        while (*nextarr)
+        next = start + 1;
+        while (intargs[next])
         {
-            if (*arr != * nextarr) // if not duplicate, return true
+            if (ft_strcmp(intargs[start], intargs[next]) == 0) // compare if they are equal
             {
-                return(1);
+                return (1); // return true if they are equal
             }
+            next++; // move to next av
         }
-
-    }
-    return (0); 
-}
-
-*/
-
-
-int notdigits(char *intargs)
-
-{
-    while (*intargs)
-    {
-        if (intargs < '0' || intargs > '9') // if digits, return true
-        {
-            return(1);
-        }
-        intargs++;
+        start++;
     }
     return (0);
+}
+
+int notdigits(char **intargs)
+
+{
+    int array;
+    int index;
+
+    array = 0;
+    while (intargs[array])
+    {
+        index = 0;
+        if (intargs[array][index] < '0' || intargs[array][index] > '9') // if not digits, return true
+        {
+            return(1);
+            index++;
+        }
+        array++;
+    }
+    return (0);
+}
+
+void    firsterrorcheck(void)
+
+{
+        ft_putstr_fd("Error\n", 2); // how to do it on standard error (fd2), 2nd parameter  
+        exit (1); // 1 means exit on error, 0 means no error
 }
 
 int main(int ac, char *av[])
 {
     int start;
-    char    **intargs;
     start = 1;
-    //intargs = av + 1; // pointer to whole str
 
     if (ac > 1) // multiple argv
     {
-        while (start < ac - 1) // traverse through args
+        if (notdigits(&av[start]) || gotduplicate(&av[start])) // check digits and check doubles
         {
-            if (notdigits(av[start]))// || gotduplicate(intargs[start])) // check digits and check doubles
+            firsterrorcheck();
+        }
+        else
+        {
+            while (start < ac - 1) // traverse through args
+            // extra condition, index 0 is a '-'
             {
-                ft_putstr_fd("Error\n", 2); // how to do it on standard error (fd2), 2nd parameer     
+                ft_atoi(av[start]); // convert ascii to integer,create atol to handle int min
+                // however number must still be within int range, hence input INTMIN and INTMAX
+                // just use the macro MIN and MAX, check library to use         
             }
             start++;
         }
         // error checking then populate
-        ft_atoi(av); // convert ascii to integer, what if atoi have INTMAX OR INTMIN
     }
     return (0); // for no parameter
-    
 }

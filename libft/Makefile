@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asyed <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2023/09/14 12:07:47 by asyed            ###   ########.fr        #
+#    Updated: 2024/04/25 21:10:10 by asyed            ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 CC 			= cc
 
@@ -33,7 +33,8 @@ SRC_FILES 	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c\
 				ft_lstnew.c ft_lstadd_front.c\
 				ft_lstsize.c ft_lstclear.c ft_lstlast.c\
 				ft_lstadd_back.c ft_lstdelone.c\
-				ft_lstiter.c ft_lstmap.c
+				ft_lstiter.c ft_lstmap.c\
+				ft_strcmp.c
 					
 OBJ_FILES 	= $(SRC_FILES:%.c=%.o)
 
@@ -42,16 +43,16 @@ NAME 		= libft.a
 all:		$(NAME)
 
 $(OBJ_FILES): %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ_FILES)
-	ar rcs $(NAME) $(OBJ_FILES)
+	@ar rcs $(NAME) $(OBJ_FILES)
 
 clean:
-			rm -f $(OBJ_FILES) $(OBJ_BONUS)
+			@rm -f $(OBJ_FILES) $(OBJ_BONUS)
 
 fclean:		clean
-			rm -f $(NAME)
+			@rm -f $(NAME)
 
 re:			fclean all
 
