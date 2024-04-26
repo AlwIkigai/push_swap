@@ -1,20 +1,21 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/25 18:44:02 by asyed            ###   ########.fr       */
+/*   Updated: 2024/04/26 15:08:34 by asyed            ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
+# include <limits.h> // to use macro for INT_MIN and INT_MAX
 
 typedef struct s_stack
 {
@@ -24,5 +25,9 @@ typedef struct s_stack
 
 // t_list **stack a // **stack a dereference to get the head (stores address of first node), *stack a is to access the first node, (find data and next)
 
+int	    push_swap(int ac, char *av[]);
+int	    gotduplicate(char **intargs);
+int	    notdigits(char **intargs);
+void	firsterrorcheck(void);
 
 #endif

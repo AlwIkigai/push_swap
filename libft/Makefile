@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
+#    By: asyed <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2024/04/25 21:10:10 by asyed            ###   ########.fr        #
+#    Updated: 2024/04/26 09:55:24 by asyed            ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 CC 			= cc
 
@@ -34,7 +34,7 @@ SRC_FILES 	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c\
 				ft_lstsize.c ft_lstclear.c ft_lstlast.c\
 				ft_lstadd_back.c ft_lstdelone.c\
 				ft_lstiter.c ft_lstmap.c\
-				ft_strcmp.c
+				ft_strcmp.c ft_atol.c
 					
 OBJ_FILES 	= $(SRC_FILES:%.c=%.o)
 
