@@ -1,32 +1,23 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 18:43:33 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/27 20:57:06 by asyed            ###   ########.fr       */
+/*   Created: 2024/04/27 19:55:51 by asyed             #+#    #+#             */
+/*   Updated: 2024/04/27 20:09:24 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void    ft_lstprint(t_list *lst)
+
 {
-	t_list	*current;
-	t_list	*next;
-
-	current = *lst;
-	while (current)
-	{
-		next = current -> next;
-		del(current -> content);
-		free(current);
-		current = next;
-	}
-	*lst = NULL;
+    while (lst != NULL)
+    {
+        ft_printf("%d\n", lst->content);
+        lst = lst->next;
+    }
 }
-/* 
-create seperate test program
-*/
