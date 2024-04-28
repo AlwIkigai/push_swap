@@ -6,13 +6,16 @@
 #    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2024/04/27 19:58:24 by asyed            ###   ########.fr        #
+#    Updated: 2024/04/28 21:25:20 by asyed            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		= push_swap
 
-SRCS		= push_swap.c errorcheck.c ft_lstprint.c # all .c over here
+SRCS_PATH	= srcs/
+
+SRCS		= push_swap.c errorcheck.c ft_lstprint.c allocate_stack_a.c freenodes.c\
+				swap.c rotate.c reverse_rotate.c push.c # all .c over here
 
 CC 			= cc
 
@@ -24,7 +27,7 @@ RM			= rm -f
 $(NAME): # this is target declaration, those below are the dependencies needed to build the file
 	@$(MAKE) -C libft 
 	@$(MAKE) -C ft_printf
-	$(CC) $(CFLAGS) $(SRCS) ./libft/libft.a ./ft_printf/ft_printf.a -o $(NAME)
+	$(CC) $(CFLAGS) $(addprefix $(SRCS_PATH), $(SRCS)) ./libft/libft.a ./ft_printf/ft_printf.a -o $(NAME)
 
 all:	$(NAME)
 
