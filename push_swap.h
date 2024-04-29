@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/28 22:05:24 by asyed            ###   ########.fr       */
+/*   Updated: 2024/04/29 17:40:44 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -40,6 +40,7 @@ void	freenodes(t_list **lst);
 // allocate memory space
 t_list **allocate_stack_a (int ac, char **av);
 // t_list **allocate_stack_b (int ac, char **av);
+t_list  **allocate_stack_b(void);
 
 // push operation
 
@@ -64,6 +65,10 @@ void    reverse_rotate(t_list **stack);
 void    reverse_rotate_a(t_list **stack_a);
 void    reverse_rotate_b(t_list **stack_b);
 void    reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b);
+
+// sort algorithm
+void    sort_two_elements(t_list **stack_a);
+void    sort_three_elements(t_list **stack_a);
 
 
 #endif

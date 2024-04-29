@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 16:48:44 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/28 21:01:59 by asyed            ###   ########.fr       */
+/*   Updated: 2024/04/29 16:38:15 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -41,4 +41,18 @@ t_list **allocate_stack_a (int ac, char **av)
     else
         exit(1) ;
     return (stack_a);
+}
+
+t_list  **allocate_stack_b(void)
+
+{
+    t_list  **stack_b;
+
+    stack_b = (t_list **)malloc(sizeof(t_list *));
+    if (stack_b == NULL)
+    {
+        return (NULL);
+    }
+    *stack_b = NULL;
+    return (stack_b);
 }

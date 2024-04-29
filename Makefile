@@ -6,7 +6,7 @@
 #    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2024/04/28 21:25:20 by asyed            ###   ########.fr        #
+#    Updated: 2024/04/29 16:57:27 by asyed            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,8 +14,10 @@ NAME		= push_swap
 
 SRCS_PATH	= srcs/
 
-SRCS		= push_swap.c errorcheck.c ft_lstprint.c allocate_stack_a.c freenodes.c\
-				swap.c rotate.c reverse_rotate.c push.c # all .c over here
+SRCS		= push_swap.c errorcheck.c ft_lstprint.c freenodes.c\
+				allocate_stack.c \
+				swap.c rotate.c reverse_rotate.c push.c\
+				sort_below_five.c
 
 CC 			= cc
 
