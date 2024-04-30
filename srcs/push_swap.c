@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:22:28 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/29 18:03:35 by asyed            ###   ########.fr       */
+/*   Updated: 2024/04/30 21:00:59 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,36 +16,16 @@ int	main(int ac, char *av[])
 {
 	t_list	**stack_a;
 	t_list	**stack_b;
-	size_t	stacklen;
-
+	
 	stack_a = allocate_stack_a(ac, av);
 	stack_b = allocate_stack_b();
-	// allocate stack_b?
-	
-	stacklen = ft_lstsize(*stack_a); // check linked list size
-	ft_printf("size of stack_a is: %d\n", stacklen); // check len
-	ft_printf("this is original state of stack_a: \n"); // check swap
+
+	ft_printf("this is original state of stack_a: \n"); // start state
 	ft_lstprint(*stack_a); // see stack
-
-	// sort 2
-	if (ft_lstsize(*stack_a) == 2)
-	{
-		ft_printf("\nthis is after sort 2: \n"); // check operation
-		sort_two_elements(stack_a);
-	}
-
-	// sort 3 
-	if (ft_lstsize(*stack_a) == 3)
-	{
-		sort_three_elements(stack_a);
-		ft_printf("\nthis is after sort 3: \n"); // check operation
-	}
-
-	// test sort 2
-	
-	ft_lstprint(*stack_a); // see stack
-
+	sort_stack_a(stack_a, stack_b);
 	// free nodes
+	ft_printf("this is final state of stack_a: \n"); // start state
+	ft_lstprint(*stack_a); // see stack
 	freenodes(stack_a); // free all nodes
 	free(stack_a);
 	free(stack_b);

@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:57:31 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/29 18:06:23 by asyed            ###   ########.fr       */
+/*   Updated: 2024/04/30 19:31:05 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -28,36 +28,38 @@ void    sort_two_elements(t_list **stack_a)
 }
 
 void    sort_three_elements(t_list **stack_a)
-// 1 2 3 do nothing
+
 {
     long  first;
     long  second;
     long  third;
-
+// 1 2 3 do nothing
     first = (long)(*stack_a)->content;
     second = (long)(*stack_a)->next->content;
     third = (long)(*stack_a)->next->next->content;
-
-    if (first > second && second < third && first < third)
-    {   // 2 1 3 sa (first > second && second < third && first < third)
+    if (first > second && second < third && first < third) // 2 1 3
         swap_a(stack_a);
-    }
-    else if (first < second && second > third && first < third) // ISSUE
+    else if (first < second && second > third && first < third) // 1 3 2
     {   // 1 3 2 sa + rra (first < second && second > third && first < third)
         reverse_rotate_a(stack_a);
         swap_a(stack_a);
     }
-    else if (first > second && second < third && first > third)
-    {   // 3 1 2 ra (first > second && second < third && first > third)
+    else if (first > second && second < third && first > third) // 3 1 2
         rotate_a(stack_a);
-    }
-    else if (first > second && second > third && first > third) // ISSUE
+    else if (first > second && second > third && first > third) // 3 2 1
     {   // 3 2 1 sa + ra (first > second && second > third && first > third)
         rotate_a(stack_a);
         swap_a(stack_a);
     }
-    else if (first < second && second > third && first > third) // ISSUE
-    {   // 2 3 1 rra (first < second && second > third && first > third)
+    else if (first < second && second > third && first > third) // 2 3 1
         reverse_rotate_a(stack_a);
-    }
+}
+
+void    sort_stack(t_list **stack_a,t_list **stack_b)
+{
+    t_list  *target_node;
+    
+    push_elements_to_stack_b(stack_a, stack_b);
+    sort_three_elements(stack_a);
+    target_node = find_target_node_a(*stack_a, *stack_b);
 }

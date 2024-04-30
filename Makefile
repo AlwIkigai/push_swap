@@ -6,7 +6,7 @@
 #    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2024/04/29 16:57:27 by asyed            ###   ########.fr        #
+#    Updated: 2024/04/30 18:36:51 by asyed            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,7 +17,8 @@ SRCS_PATH	= srcs/
 SRCS		= push_swap.c errorcheck.c ft_lstprint.c freenodes.c\
 				allocate_stack.c \
 				swap.c rotate.c reverse_rotate.c push.c\
-				sort_below_five.c
+				sort_stack_a.c sort_below_five.c targetcost_to_a.c\
+				move_to_stack_b.c 
 
 CC 			= cc
 
