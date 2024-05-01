@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 17:21:47 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/28 21:57:51 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/01 15:09:50 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,11 +16,11 @@
 // *stack -> next = accessing the next element in node
 // (*stack) -> next = pointing to the next element in node
 
-void    swap(t_list **stack)
+void    swap(t_stack **stack)
 
 {
-    t_list  *goingdown;
-    t_list  *goingup;
+    t_stack  *goingdown;
+    t_stack  *goingup;
 
     goingdown = *stack; // first node, B
     goingup = (*stack)->next; // second node, A
@@ -34,21 +34,21 @@ void    swap(t_list **stack)
 
 // stack: [A -> next(B memory address)] -> [B -> next(NULL)] -> NULL (before swap)
 
-void    swap_a(t_list **stack_a)
+void    swap_a(t_stack **stack_a)
 
 {
     swap(stack_a);
     ft_printf("sa\n");
 }
 
-void    swap_b(t_list **stack_b)
+void    swap_b(t_stack **stack_b)
 
 {
     swap(stack_b);
     ft_printf("sb\n");
 }
 
-void    swap_a_and_b(t_list **stack_a, t_list **stack_b)
+void    swap_a_and_b(t_stack **stack_a, t_stack **stack_b)
 
 {
     swap(stack_a);

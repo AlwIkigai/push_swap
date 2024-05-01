@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:22:28 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/30 21:00:59 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/01 22:24:16 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,19 +14,33 @@
 
 int	main(int ac, char *av[])
 {
-	t_list	**stack_a;
-	t_list	**stack_b;
+	t_stack	**stack_a;
+	t_stack	**stack_b;
 	
+	if (ac <= 1)
+	{
+		exit (EXIT_FAILURE);	
+	}
 	stack_a = allocate_stack_a(ac, av);
 	stack_b = allocate_stack_b();
 
-	ft_printf("this is original state of stack_a: \n"); // start state
+	ft_printf("this is original state of stack_a: \n\n"); // start state
 	ft_lstprint(*stack_a); // see stack
+	ft_printf("\n"); // start state
+	
+	// main program
+	
 	sort_stack_a(stack_a, stack_b);
-	// free nodes
-	ft_printf("this is final state of stack_a: \n"); // start state
+	
+	// own test
+	ft_printf("this is final state of stack_a: \n\n"); // start state
 	ft_lstprint(*stack_a); // see stack
+	ft_printf("this is final state of stack_b: \n\n"); // start state
+	ft_lstprint(*stack_b); // see stack
+
+	// free nodes
 	freenodes(stack_a); // free all nodes
+	freenodes(stack_b); // stack b should be free when nothing in node
 	free(stack_a);
 	free(stack_b);
 	return (0);

@@ -6,17 +6,17 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 20:32:19 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/28 22:14:52 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/01 15:09:40 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-void    rotate(t_list **stack)
+void    rotate(t_stack **stack)
 
 {
-    t_list  *first; 
-    t_list  *last;
+    t_stack  *first; 
+    t_stack  *last;
 
     if (*stack && (*stack)-> next) //not empty and 2 nodes at least
     {
@@ -32,21 +32,21 @@ void    rotate(t_list **stack)
     }
 }
 
-void    rotate_a(t_list **stack_a)
+void    rotate_a(t_stack **stack_a)
 
 {
     rotate(stack_a);
     ft_printf("ra\n");
 }
 
-void    rotate_b(t_list **stack_b)
+void    rotate_b(t_stack **stack_b)
 
 {
     rotate(stack_b);
     ft_printf("rb\n");
 }
 
-void    rotate_a_and_b(t_list **stack_a, t_list **stack_b)
+void    rotate_a_and_b(t_stack **stack_a, t_stack **stack_b)
 
 {
     rotate(stack_a);

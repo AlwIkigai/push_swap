@@ -6,17 +6,17 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:57:31 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/30 19:31:05 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/01 15:41:03 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-void    sort_two_elements(t_list **stack_a)
+void    sort_two_elements(t_stack **stack_a)
 
 {
-    t_list  *first;
-    t_list  *second;
+    t_stack  *first;
+    t_stack  *second;
 
     first = *stack_a;
     second = (*stack_a)->next;
@@ -27,7 +27,7 @@ void    sort_two_elements(t_list **stack_a)
     }
 }
 
-void    sort_three_elements(t_list **stack_a)
+void    sort_three_elements(t_stack **stack_a)
 
 {
     long  first;
@@ -55,11 +55,3 @@ void    sort_three_elements(t_list **stack_a)
         reverse_rotate_a(stack_a);
 }
 
-void    sort_stack(t_list **stack_a,t_list **stack_b)
-{
-    t_list  *target_node;
-    
-    push_elements_to_stack_b(stack_a, stack_b);
-    sort_three_elements(stack_a);
-    target_node = find_target_node_a(*stack_a, *stack_b);
-}

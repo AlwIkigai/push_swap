@@ -6,16 +6,16 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:07:53 by asyed             #+#    #+#             */
-/*   Updated: 2024/04/28 22:47:42 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/01 15:09:33 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-void    push(t_list **origin, t_list **destination)
+void    push(t_stack **origin, t_stack **destination)
 
 {
-    t_list  *top;
+    t_stack  *top;
 
     if (*origin) // not empty
     {
@@ -27,14 +27,14 @@ void    push(t_list **origin, t_list **destination)
 
 }
 
-void    push_a(t_list **stack_b, t_list **stack_a)
+void    push_a(t_stack **stack_b, t_stack **stack_a)
 
 {
     push(stack_b, stack_a);
     ft_printf("pa\n");
 }
 
-void    push_b(t_list **stack_a, t_list **stack_b)
+void    push_b(t_stack **stack_a, t_stack **stack_b)
 
 {
     push(stack_a, stack_b);
