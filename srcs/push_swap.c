@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 15:22:28 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/01 22:24:16 by asyed            ###   ########.fr       */
+/*   Created: 2024/05/02 19:01:24 by asyed             #+#    #+#             */
+/*   Updated: 2024/05/02 19:01:26 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -33,10 +33,10 @@ int	main(int ac, char *av[])
 	sort_stack_a(stack_a, stack_b);
 	
 	// own test
-	ft_printf("this is final state of stack_a: \n\n"); // start state
-	ft_lstprint(*stack_a); // see stack
-	ft_printf("this is final state of stack_b: \n\n"); // start state
-	ft_lstprint(*stack_b); // see stack
+	// ft_printf("this is final state of stack_a: \n\n"); // start state
+	// ft_lstprint(*stack_a); // see stack
+	// ft_printf("this is final state of stack_b: \n\n"); // start state
+	// ft_lstprint(*stack_b); // see stack
 
 	// free nodes
 	freenodes(stack_a); // free all nodes

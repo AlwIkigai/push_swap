@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/01 22:00:19 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/02 19:35:29 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -29,7 +29,6 @@ typedef struct s_stack
 
 // t_stack **stack a // **stack a dereference to get the head (stores address of first node), *stack a is to access the first node, (find data and next)
 
-
 // main program
 int	    push_swap(int ac, char *av[]);
 
@@ -48,6 +47,31 @@ int	ft_lstsizeps(t_stack *lst);
 // allocate memory space
 t_stack **allocate_stack_a (int ac, char **av);
 t_stack  **allocate_stack_b(void);
+
+// sort algorithm
+void    sort_stack_a(t_stack **stack_a, t_stack **stack_b);
+void    sort_two_elements(t_stack **stack_a);
+void    sort_three_elements(t_stack **stack_a);
+void    sort_stack(t_stack **stack_a,t_stack **stack_b);
+
+// find index and value in position
+void    find_index_position(t_stack **stack);
+void    confirm_rank_in_position(t_stack **stack_a);
+
+// push to b operation
+void    push_elements_to_stack_b(t_stack **stack_a, t_stack **stack_b);
+void	push_below_median(t_stack **stack_a, t_stack **stack_b, int stack_len_a, int median);
+void	push_remainder(t_stack **stack_a, t_stack **stack_b);
+int find_median_position(t_stack **stack);
+
+// target cost analysis to b
+
+void    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b);
+t_stack *find_target_node(t_stack *stack_a, t_stack *stack_b);
+t_stack *find_closest_bigger(t_stack *stack_a, int  stack_b_rank);
+t_stack *find_smolnbr(t_stack *stack_a);
+
+// utils
 
 // push operation
 void    push(t_stack **origin, t_stack **destination);
@@ -72,23 +96,8 @@ void    reverse_rotate_a(t_stack **stack_a);
 void    reverse_rotate_b(t_stack **stack_b);
 void    reverse_rotate_a_and_b(t_stack **stack_a, t_stack **stack_b);
 
-// sort algorithm
-void    sort_stack_a(t_stack **stack_a, t_stack **stack_b);
-void    sort_two_elements(t_stack **stack_a);
-void    sort_three_elements(t_stack **stack_a);
-void    sort_stack(t_stack **stack_a,t_stack **stack_b);
-
-// find index and value in position
-void    find_index_position(t_stack **stack);
-void    confirm_rank_in_position(t_stack **stack_a);
-
-// push to b operation
-void    push_elements_to_stack_b(t_stack **stack_a, t_stack **stack_b);
-void	push_below_median(t_stack **stack_a, t_stack **stack_b, int stack_len_a, int median);
-void	push_remainder(t_stack **stack_a, t_stack **stack_b);
-int find_median_position(t_stack **stack);
-
-// target cost analysis to a
+// just for test, remove before submission
+void print_indices(t_stack *stack);
 
 #endif
 

@@ -1,32 +1,16 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_a_state.c                                    :+:      :+:    :+:   */
+/*   set_rank_in_stone.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 15:53:32 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/01 22:25:10 by asyed            ###   ########.fr       */
+/*   Created: 2024/05/02 19:25:51 by asyed             #+#    #+#             */
+/*   Updated: 2024/05/02 19:25:53 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
-
-void    find_index_position(t_stack **stack)
-
-{
-    t_stack *current;
-    int index;
-
-    current = *stack;
-    index = 0;
-    while (current != NULL)
-    {
-        current->index = index;
-        current = current->next;
-        index++;
-    }
-}
 
 void    confirm_rank_in_position(t_stack **stack_a)
 
@@ -60,14 +44,4 @@ void    confirm_rank_in_position(t_stack **stack_a)
         }
         stack_ranking--;
     }
-}
-
-int find_median_position(t_stack **stack)
-
-{
-    int stack_len;
-    int median;
-    stack_len = ft_lstsizeps(*stack);
-    median = (int)(stack_len / 2);
-    return (median);
 }

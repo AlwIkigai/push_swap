@@ -1,12 +1,12 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack_a.c                                     :+:      :+:    :+:   */
+/*   start_sorting_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 10:32:43 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/01 21:57:38 by asyed            ###   ########.fr       */
+/*   Created: 2024/05/02 18:52:47 by asyed             #+#    #+#             */
+/*   Updated: 2024/05/02 18:52:49 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -37,43 +37,6 @@ void    sort_stack_a(t_stack **stack_a, t_stack	**stack_b)
 	{
 		sort_stack(stack_a, stack_b);
 	}
-	ft_lstprint(*stack_a); // see stack
-    
-}
-
-
-void    sort_stack(t_stack **stack_a,t_stack **stack_b)
-{
-	//t_stack  *target_node;
-	
-	find_index_position(stack_a);
-	
-	// Print out the indices of each node
-    t_stack *current;
-	
-	current = *stack_a;
-    while (current != NULL)
-    {
-        ft_printf("Index: %d\n", current->index);
-        current = current->next;
-    }
-	ft_printf("\n");
-	confirm_rank_in_position(stack_a);
-
-	// for testing, update current
-	current = *stack_a;
-	while (current != NULL)
-    {
-        ft_printf("Rank: %d\n", current->rank);
-        current = current->next;
-    }
-    push_elements_to_stack_b(stack_a, stack_b);
-	// update initial index
-
-	// find confirm value in position
-    sort_three_elements(stack_a);
-    // target_node = find_target_node_a(*stack_a, *stack_b);
-    // calculate cost
 }
 
 void    push_elements_to_stack_b(t_stack **stack_a, t_stack **stack_b)
