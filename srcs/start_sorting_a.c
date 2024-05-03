@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   start_sorting_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:52:47 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/02 18:52:49 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/03 09:52:28 by asyed            ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -42,14 +42,13 @@ void    sort_stack_a(t_stack **stack_a, t_stack	**stack_b)
 void    push_elements_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 
 {
-	t_stack	*current;
+	//t_stack	*current;
     int stack_len_a;	
 	int median;
 
-	current = *stack_a;
+	//current = *stack_a;
 	stack_len_a = ft_lstsizeps(*stack_a);
 	median = find_median_position(stack_a);
-    
 	push_below_median(stack_a, stack_b, stack_len_a, median);
 	push_remainder(stack_a, stack_b);
 }
@@ -79,7 +78,7 @@ void	push_below_median(t_stack **stack_a, t_stack **stack_b, int stack_len_a, in
 void	push_remainder(t_stack **stack_a, t_stack **stack_b)
 
 {
-	t_stack	*current;
+	//t_stack	*current;
 	int	remainder;
 
 	remainder = ft_lstsizeps(*stack_a);
@@ -87,7 +86,7 @@ void	push_remainder(t_stack **stack_a, t_stack **stack_b)
 	while (remainder > 3)
 	{
 		push_b(stack_a, stack_b);
-		current = *stack_a;
+		//current = *stack_a;
 		remainder--;
 	}
 }

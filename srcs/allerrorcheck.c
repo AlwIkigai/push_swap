@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   allerrorcheck.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:05:26 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/02 19:01:10 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/03 13:09:36 by asyed            ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -70,4 +70,15 @@ void	firsterrorcheck(void)
 	ft_putstr_fd("Error\n", 2);
 	// how to do it on standard error (fd2) 2nd parameter
 	exit(1); // 1 means exit on error 0 means no error
+}
+
+int is_sorted(t_stack *stack)
+{
+    while (stack && stack->next)
+    {
+        if (stack->content > stack->next->content)
+            return (0);
+        stack = stack->next;
+    }
+    return (1);
 }

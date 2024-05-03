@@ -6,7 +6,7 @@
 /*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:01:53 by asyed             #+#    #+#             */
-/*   Updated: 2023/09/14 22:12:04 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/03 13:09:36 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }
+
 /*
 #include <stdio.h>
 

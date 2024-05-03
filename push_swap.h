@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/03 12:24:19 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/03 13:23:44 by asyed            ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -17,14 +17,15 @@
 # include "./ft_printf/ft_printf.h"
 # include <limits.h> // to use macro for INT_MIN and INT_MAX
 
-
-
 typedef struct s_stack
 {
     struct s_stack  *next; // pointing to next struct (node), dereference to get address of the next node
     long            content; // hold integer value
     int             index; // [0, 1, 2, 3, 4] [index position] will change, align with index numbering
     int             rank; // [50, 5, 48, 20] rank in position = [4th, 1st, 3rd, 2nd], stay true, ranking
+    int             target_node_index;
+    int             target_cost;
+    int             b_cost;
 }                   t_stack; // this is a type
 
 // t_stack **stack a // **stack a dereference to get the head (stores address of first node), *stack a is to access the first node, (find data and next)
@@ -36,13 +37,14 @@ int	    push_swap(int ac, char *av[]);
 int	    gotduplicate(char **intargs);
 int	    notdigits(char **intargs);
 void	firsterrorcheck(void);
+int     is_sorted(t_stack *stack);
 
 // additonal list functions
 void    ft_lstprint(t_stack *lst);
 void	freenodes(t_stack **lst);
 t_stack	*ft_lstnewps(long content);
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
-int	ft_lstsizeps(t_stack *lst);
+int	    ft_lstsizeps(t_stack *lst);
 
 // allocate memory space
 t_stack **allocate_stack_a (int ac, char **av);
@@ -73,12 +75,11 @@ t_stack *find_smolnbr(t_stack *stack_a);
 
 // cost analysis
 
-
 int calculate_cost(t_stack *target, t_stack *stack_a, t_stack *stack_b, int median_a, int median_b);
 int calculate_below_median(t_stack *target, t_stack *stack_b);
 int calculate_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
-int target_below_stack_b_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
-int stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
+int target_below_stack_b_above_median(t_stack *target, t_stack *stack_b, int stack_b_len);
+int stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len);
 
 // push operation
 void    push(t_stack **origin, t_stack **destination);
