@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:59:09 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/02 21:19:53 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/03 11:55:29 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,15 +31,15 @@ void    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b)
         find_index_position(stack_a);
         find_index_position(stack_b);
 
-        median_a = find_median_position(*stack_a);
-        median_b = find_median_position(*stack_b);
+        median_a = find_median_position(stack_a);
+        median_b = find_median_position(stack_b);
         
         ft_printf("Indices after update:\n");
         print_indices(*stack_a);
         print_indices(*stack_b);
         
         target_node = find_target_node(*stack_a, current_b);
-        cost = calculate_cost(target_node, stack_a, stack_b, median_a, median_b);
+        cost = calculate_cost(target_node, *stack_a, *stack_b, median_a, median_b);
         
         ft_printf("Cost to move target node %d: %d\n", target_node->content, cost);
 

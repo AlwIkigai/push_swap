@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/02 19:35:29 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/03 12:24:19 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -64,14 +64,21 @@ void	push_below_median(t_stack **stack_a, t_stack **stack_b, int stack_len_a, in
 void	push_remainder(t_stack **stack_a, t_stack **stack_b);
 int find_median_position(t_stack **stack);
 
-// target cost analysis to b
+// secure target to b
 
 void    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b);
 t_stack *find_target_node(t_stack *stack_a, t_stack *stack_b);
 t_stack *find_closest_bigger(t_stack *stack_a, int  stack_b_rank);
 t_stack *find_smolnbr(t_stack *stack_a);
 
-// utils
+// cost analysis
+
+
+int calculate_cost(t_stack *target, t_stack *stack_a, t_stack *stack_b, int median_a, int median_b);
+int calculate_below_median(t_stack *target, t_stack *stack_b);
+int calculate_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
+int target_below_stack_b_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
+int stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
 
 // push operation
 void    push(t_stack **origin, t_stack **destination);
