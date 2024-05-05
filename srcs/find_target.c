@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:00:36 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/05 14:30:32 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/05 16:33:22 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,10 +27,6 @@ t_stack *find_target_node(t_stack *stack_a, t_stack *stack_b)
         target_node = smolnbr;
     }
     target_node->current_b_target_position = target_node->index;
-    ft_printf("\nthis is the stack b content: %d\n", stack_b->content);
-    ft_printf("\nthis is the stack b rank: %d\n", stack_b->rank);
-    ft_printf("\nthis is the current target: %d\n", target_node->content);
-    ft_printf("\nthis is the target rank: %d\n", target_node->rank);
     return (target_node);
 }
 

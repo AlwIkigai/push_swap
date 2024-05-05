@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asyed <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2024/05/03 13:03:57 by asyed            ###   ########.fr        #
+#    Updated: 2024/05/05 21:02:21 by asyed            ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME		= push_swap
 
@@ -19,7 +19,8 @@ SRCS		= push_swap.c\
 				set_rank_in_stone.c find_index_median.c\
 				sort_algorithm.c sort_two_and_three.c start_sorting_a.c\
 				utils_push.c utils_swap.c utils_rotate.c utils_reverse_rotate.c\
-				find_target_and_cost.c find_target.c calculate_cost.c
+				find_target_and_cost.c find_target.c calculate_cost.c\
+				execute_move.c
 
 CC 			= cc
 

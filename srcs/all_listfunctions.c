@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:05:21 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/05 15:24:36 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/05 20:05:20 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -25,7 +25,8 @@ t_stack	*ft_lstnewps(long content)
 	new_node->rank = 0;
 	new_node->current_b_target_position = -1;
 	new_node->total_cost = INT_MAX;
-	new_node->target_cost = INT_MAX;
+	new_node->both_cost = INT_MAX;
+	new_node->a_cost = INT_MAX;
 	new_node->b_cost = INT_MAX;
 	return (new_node);
 }

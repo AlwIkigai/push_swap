@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   sort_algorithm.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:47:11 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/03 13:51:15 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/05 16:35:09 by asyed            ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -57,8 +57,6 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 
 	// sort 3 in stack a
 	sort_three_elements(stack_a);
-	ft_printf("\nthis is after sort 3 stack_a: \n\n"); // start state
-	ft_lstprint(*stack_a);                             // see stack
 
 	// find target and cost
 	find_target_and_calculate_cost(stack_a, stack_b);
