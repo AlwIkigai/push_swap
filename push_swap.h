@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/03 13:23:44 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/05 15:29:00 by asyed            ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -23,7 +23,8 @@ typedef struct s_stack
     long            content; // hold integer value
     int             index; // [0, 1, 2, 3, 4] [index position] will change, align with index numbering
     int             rank; // [50, 5, 48, 20] rank in position = [4th, 1st, 3rd, 2nd], stay true, ranking
-    int             target_node_index;
+    int             current_b_target_position;
+    int             total_cost;
     int             target_cost;
     int             b_cost;
 }                   t_stack; // this is a type
@@ -75,11 +76,11 @@ t_stack *find_smolnbr(t_stack *stack_a);
 
 // cost analysis
 
-int calculate_cost(t_stack *target, t_stack *stack_a, t_stack *stack_b, int median_a, int median_b);
-int calculate_below_median(t_stack *target, t_stack *stack_b);
-int calculate_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
-int target_below_stack_b_above_median(t_stack *target, t_stack *stack_b, int stack_b_len);
-int stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len);
+int     calculate_cost(t_stack *target, t_stack *stack_a, t_stack *stack_b);
+void    calculate_below_median(t_stack *target, t_stack *stack_b);
+void    calculate_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
+void    target_below_stack_b_above_median(t_stack *target, t_stack *stack_b, int stack_b_len);
+void    stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len);
 
 // push operation
 void    push(t_stack **origin, t_stack **destination);
