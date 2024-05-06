@@ -6,18 +6,18 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:59:09 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/05 23:12:07 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/06 21:33:34 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-void    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b)
+t_stack    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b)
 
 {
     t_stack *current_b;
     t_stack *target_node;
-    t_stack *cheapest_target;
+    t_stack cheapest_target;
     int cost;
     int lowest_cost;
     int stack_b_len;
@@ -25,7 +25,7 @@ void    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b)
     current_b = *stack_b;
     stack_b_len = ft_lstsizeps(*stack_b);
     lowest_cost = INT_MAX;
-    cheapest_target = NULL;
+    // cheapest_target = NULL;
     ft_printf("this is current state of stack_a: \n\n"); // 
     ft_lstprint(*stack_a);                               // see stack
     ft_printf("this is current state of stack_b: \n\n"); // start state
@@ -43,17 +43,18 @@ void    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b)
         if (cost < lowest_cost)
         {
             lowest_cost = cost;
-            cheapest_target = target_node;
+            cheapest_target = *target_node;
+            cheapest_target.target_link = current_b->index;
         }
         current_b = current_b->next;
     }
     ft_printf("\nlowest cost: %d\n", lowest_cost);
-    if (cheapest_target != NULL)
-        execute_move(cheapest_target, *stack_a, *stack_b);
+    // if (cheapest_target)
     ft_printf("this is current state of stack_a: \n\n"); // 
     ft_lstprint(*stack_a);                               // see stack
     ft_printf("this is current state of stack_b: \n\n"); // start state
-    ft_lstprint(*stack_b);     
+    ft_lstprint(*stack_b);
+    return (cheapest_target);
 }
 
 // test function to see index

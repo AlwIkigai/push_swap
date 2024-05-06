@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/05 21:03:08 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/06 21:31:36 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,6 +24,7 @@ typedef struct s_stack
     int             index; // [0, 1, 2, 3, 4] [index position] will change, align with index numbering
     int             rank; // [50, 5, 48, 20] rank in position = [4th, 1st, 3rd, 2nd], stay true, ranking
     int             current_b_target_position;
+    int             target_link;
     int             total_cost;
     int             both_cost;
     int             a_cost;
@@ -46,7 +47,7 @@ void    ft_lstprint(t_stack *lst);
 void	freenodes(t_stack **lst);
 t_stack	*ft_lstnewps(long content);
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
-int	    ft_lstsizeps(t_stack *lst);
+float	ft_lstsizeps(t_stack *lst);
 
 // allocate memory space
 t_stack **allocate_stack_a (int ac, char **av);
@@ -66,11 +67,11 @@ void    confirm_rank_in_position(t_stack **stack_a);
 void    push_elements_to_stack_b(t_stack **stack_a, t_stack **stack_b);
 void	push_below_median(t_stack **stack_a, t_stack **stack_b, int stack_len_a, int median);
 void	push_remainder(t_stack **stack_a, t_stack **stack_b);
-int find_median_position(t_stack **stack);
+float   find_median_position(t_stack **stack);
 
 // secure target to b
 
-void    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b);
+t_stack    find_target_and_calculate_cost(t_stack **stack_a, t_stack **stack_b);
 t_stack *find_target_node(t_stack *stack_a, t_stack *stack_b);
 t_stack *find_closest_bigger(t_stack *stack_a, int  stack_b_rank);
 t_stack *find_smolnbr(t_stack *stack_a);
@@ -78,15 +79,18 @@ t_stack *find_smolnbr(t_stack *stack_a);
 // cost analysis
 
 int calculate_cost(t_stack *target, t_stack *stack_a, t_stack *stack_b, int stack_b_len);
-void    calculate_below_median(t_stack *target, t_stack *stack_b);
-void    calculate_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
-void    target_below_stack_b_above_median(t_stack *target, t_stack *stack_b, int stack_b_len);
-void    stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len);
+void    calculate_above_median_line(t_stack *target, t_stack *stack_b);
+void    calculate_below_median_line(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len);
+void    target_above_stack_b_below_median_line(t_stack *target, t_stack *stack_b, int stack_b_len);
+void    stack_b_below_target_above_median_line(t_stack *target, t_stack *stack_b,int target_len);
 
 // execute move
 
-void    execute_move(t_stack *cheapest_target, t_stack *stack_a, t_stack *stack_b);
-void    move_below_median(t_stack *cheapest_target,t_stack *stack_a, t_stack *stack_b);
+void    execute_move(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b);
+void    move_both_above_median_line(t_stack cheapest_target,t_stack **stack_a, t_stack **stack_b);
+void    move_both_below_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b);
+void    move_target_above_stack_b_below_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b);
+void    move_stack_b_below_target_above_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b);
 
 // push operation
 void    push(t_stack **origin, t_stack **destination);

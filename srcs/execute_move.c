@@ -6,39 +6,36 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 19:43:43 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/05 21:15:45 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/06 21:34:43 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-void    execute_move(t_stack *cheapest_target, t_stack *stack_a, t_stack *stack_b)
+void    execute_move(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b)
 
 {
-    int cost;
-    int target_len;
-    int stack_b_len;
-    int median_a;
-    int median_b;
+    float stack_a_len;
+    float stack_b_len;
+    float median_a;
+    float median_b;
     
-    cost = 0;
-    target_len = ft_lstsizeps(stack_a);
-    stack_b_len = ft_lstsizeps(stack_b);
-    median_a = target_len / 2;
-    median_b = stack_b_len / 2;
+    stack_a_len = (float)ft_lstsizeps(*stack_a);
+    stack_b_len = (float)ft_lstsizeps(*stack_b);
+    median_a = stack_a_len / 2.0;
+    median_b = stack_b_len / 2.0;
 
-    if (cheapest_target->index < median_a && stack_b->index < median_b) // less than median for both
-        move_below_median(cheapest_target, stack_a, stack_b); // less 
-    // else if (cheapest_target->index >= median_a && stack_b->index >= median_b) // more than median for both
-        // move_above_median(stack_a, stack_b, target_len, stack_b_len); // more
-    // else if (cheapest_target->index < median_a && stack_b->index >= median_b)
-        // move_stack_a_below_stack_b_above_median(cheapest_target, stack_b, stack_b_len); // target less than and stack b more than median
-    // else if (cheapest_target->index >= median_a && stack_b->index < median_b)
-        // stack_b_below_stack_a_above_median(cheapest_target, stack_b, target_len); // stack b less than median and target more than median
-    // cost = cheapest_target->total_cost;
+    if (cheapest_target.index <= median_a && cheapest_target.target_link <= median_b) // less than median for both
+        move_both_above_median_line(cheapest_target, stack_a, stack_b); // less 
+    else if (cheapest_target.index > median_a && cheapest_target.target_link > median_b) // more than median for both
+        move_both_below_median_line(cheapest_target, stack_a, stack_b); // more
+    else if (cheapest_target.index <= median_a && cheapest_target.target_link > median_b)
+        move_target_above_stack_b_below_median_line(cheapest_target, stack_a, stack_b); // target less than and stack b more than median
+    else if (cheapest_target.index > median_a && cheapest_target.target_link <= median_b)
+        move_stack_b_below_target_above_median_line(cheapest_target, stack_a, stack_b); // stack b less than median and target more than median
 }
 
-void    move_below_median(t_stack *cheapest_target,t_stack *stack_a, t_stack *stack_b)
+void    move_both_above_median_line(t_stack cheapest_target,t_stack **stack_a, t_stack **stack_b)
 
 {
     int rr;
@@ -48,63 +45,90 @@ void    move_below_median(t_stack *cheapest_target,t_stack *stack_a, t_stack *st
     rr = 0;
     ra = 0;
     rb = 0;
-    
-    if (cheapest_target->index > stack_b->index)
+    if (cheapest_target.index > (*stack_b)->index)
     {
-        rr = cheapest_target->both_cost; // rr
-        ra = cheapest_target->a_cost; // ra
-        while (rr-- > 0)
-            rotate_a_and_b(&stack_a, &stack_b);
+        rr = cheapest_target.both_cost; // rr
+        ra = cheapest_target.a_cost; // ra
+        while (rr-- > 0 && ft_lstsizeps(*stack_b) > 1)
+            rotate_a_and_b(stack_a, stack_b);
         while (ra-- > 0)
-            rotate_a(&stack_a);
+            rotate_a(stack_a);
     }
     else
     {
-        rr = cheapest_target->both_cost; // rr
-        rb = cheapest_target->b_cost; // rb
-        while (rr-- > 0)
-            rotate_a_and_b(&stack_a, &stack_b);
+        rr = cheapest_target.both_cost; // rr
+        rb = cheapest_target.b_cost; // rb
+        while (rr-- > 0 && ft_lstsizeps(*stack_b) > 1)
+            rotate_a_and_b(stack_a, stack_b);
         while (rb-- > 0)
-            rotate_b(&stack_b);
+            rotate_b(stack_b);
     }
-    push_a(&stack_b, &stack_a);
+    push_a(stack_b, stack_a);
 }
 
-/*
 
-void    calculate_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len)
+void    move_both_below_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b)
 
 {
-    if (target_len - target->index > stack_b_len - stack_b->index)
+    int rrr;
+    int rra;
+    int rrb;
+
+    rrr = 0;
+    rra = 0;
+    rrb = 0;
+    if (ft_lstsizeps(*stack_a) - cheapest_target.index > ft_lstsizeps(*stack_b) - (*stack_b)->index)
     {
-        target->total_cost = target_len - target->index; // total cost
-        target->both_cost = stack_b_len - stack_b->index; // rr
-        target->a_cost = target->total_cost - target->both_cost; // ra
+        rrr = cheapest_target.both_cost; // rrr
+        rra = cheapest_target.a_cost; // rra
+        while (rrr-- > 0 && ft_lstsizeps(*stack_b) > 1)
+            reverse_rotate_a_and_b(stack_a, stack_b);
+        while (rra-- > 0)
+            reverse_rotate_a(stack_a);
     }
     else
     {
-        target->total_cost = stack_b_len - stack_b->index; // total cost
-        target->both_cost = target_len - target->index; // rr
-        target->a_cost = target->total_cost - target->both_cost; // rb
+        rrr = cheapest_target.both_cost; // rrr
+        rrb = cheapest_target.b_cost; // rrb
+        while (rrr-- > 0 && ft_lstsizeps(*stack_b) > 1)
+            reverse_rotate_a_and_b(stack_a, stack_b); 
+        while (rrb-- > 0)
+            reverse_rotate_b(stack_b); // rrb
     }
+    push_a(stack_b, stack_a);
 }
 
-void target_below_stack_b_above_median(t_stack *target, t_stack *stack_b, int stack_b_len)
+void move_target_above_stack_b_below_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b)
 
 {
-    target->a_cost = target->index; // stack_a_move = ra
-    target->b_cost = stack_b_len - stack_b->index; // stack_b_move = rrb
-    target->total_cost = target->a_cost + target->b_cost; // number of ra + rrb
+    int ra;
+    int rrb;
+
+    ra = 0;
+    rrb = 0;
+    ra = cheapest_target.a_cost;
+    rrb = cheapest_target.b_cost;
+    while (ra-- > 0)
+        rotate_a(stack_a); 
+    while (rrb-- > 0)
+        reverse_rotate_b(stack_b); 
+    push_a(stack_b, stack_a);
 }   
 
-
-
-void stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len)
+void move_stack_b_below_target_above_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b)
 
 {
-    target->a_cost = target_len - target->index; // stack_a_move = rra
-    target->b_cost = stack_b->index; // stack_b_move = rb
-    target->total_cost = target->a_cost + target->b_cost; // number of rra + rb
+    int rra;
+    int rb;
+
+    rra = 0;
+    rb = 0;
+    rra = cheapest_target.a_cost;
+    rb = cheapest_target.b_cost;
+    while (rra-- > 0)
+        reverse_rotate_a(stack_a); 
+    while (rb-- > 0)
+        rotate_b(stack_b); 
+    push_a(stack_b, stack_a);
 }
 
-*/

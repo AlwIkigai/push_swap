@@ -6,19 +6,19 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 19:23:23 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/02 19:24:37 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/06 21:10:51 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-int find_median_position(t_stack **stack)
+float find_median_position(t_stack **stack)
 
 {
-    int stack_len;
-    int median;
-    stack_len = ft_lstsizeps(*stack);
-    median = (int)(stack_len / 2);
+    float stack_len;
+    float median;
+    stack_len = (float)ft_lstsizeps(*stack);
+    median = stack_len / 2.0;
     return (median);
 }
 

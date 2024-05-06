@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:47:11 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/05 16:35:09 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/06 20:04:32 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	// t_stack  *target_node;
+	t_stack  cheapest_target;
 	// update initial index
 	find_index_position(stack_a);
 
@@ -58,8 +58,20 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	// sort 3 in stack a
 	sort_three_elements(stack_a);
 
+	while (*stack_b != NULL)
+	{
+		cheapest_target = find_target_and_calculate_cost(stack_a, stack_b);
+		execute_move(cheapest_target, stack_a, stack_b);
+	}
+	
 	// find target and cost
-	find_target_and_calculate_cost(stack_a, stack_b);
+
+	ft_printf("this is final state of stack_a: \n\n"); // start state
+	ft_lstprint(*stack_a);                               // see stack
+	ft_printf("this is final state of stack_b: \n\n"); // start state
+	ft_lstprint(*stack_b);                               // see stack
+	ft_printf("\n");
+	
 	
 	/*
 	

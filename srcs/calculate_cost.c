@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:02:55 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/05 20:56:09 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/06 20:48:31 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,30 +16,30 @@ int calculate_cost(t_stack *target, t_stack *stack_a, t_stack *stack_b, int stac
 
 {
     int cost;
-    int target_len;
+    float target_len;
     // int stack_b_len;
-    int median_a;
-    int median_b;
+    float median_a;
+    float median_b;
     
     cost = 0;
-    target_len = ft_lstsizeps(stack_a);
+    target_len = (float)ft_lstsizeps(stack_a);
     // stack_b_len = ft_lstsizeps(stack_b);
-    median_a = target_len / 2;
-    median_b = stack_b_len / 2;
+    median_a = target_len / 2.0;
+    median_b = (float)stack_b_len / 2.0;
 
-    if (target->index < median_a && stack_b->index < median_b)
-        calculate_below_median(target, stack_b); // less 
-    else if (target->index >= median_a && stack_b->index >= median_b)
-        calculate_above_median(target, stack_b, target_len, stack_b_len); // more
-    else if (target->index < median_a && stack_b->index >= median_b)
-        target_below_stack_b_above_median(target, stack_b, stack_b_len);
-    else if (target->index >= median_a && stack_b->index < median_b)
-        stack_b_below_target_above_median(target, stack_b, target_len);
+    if (target->index <= median_a && stack_b->index <= median_b)
+        calculate_above_median_line(target, stack_b); // less 
+    else if (target->index > median_a && stack_b->index > median_b)
+        calculate_below_median_line(target, stack_b, target_len, stack_b_len); // more
+    else if (target->index <= median_a && stack_b->index > median_b)
+        target_above_stack_b_below_median_line(target, stack_b, stack_b_len);
+    else if (target->index > median_a && stack_b->index <= median_b)
+        stack_b_below_target_above_median_line(target, stack_b, target_len);
     cost = target->total_cost;
     return (cost);
 }
 
-void    calculate_below_median(t_stack *target, t_stack *stack_b)
+void    calculate_above_median_line(t_stack *target, t_stack *stack_b)
 
 {
     if (target->index > stack_b->index)
@@ -58,7 +58,7 @@ void    calculate_below_median(t_stack *target, t_stack *stack_b)
 }
 
 
-void    calculate_above_median(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len)
+void   calculate_below_median_line(t_stack *target, t_stack *stack_b,int target_len, int stack_b_len)
 
 {
     if (target_len - target->index > stack_b_len - stack_b->index)
@@ -75,7 +75,7 @@ void    calculate_above_median(t_stack *target, t_stack *stack_b,int target_len,
     }
 }
 
-void target_below_stack_b_above_median(t_stack *target, t_stack *stack_b, int stack_b_len)
+void target_above_stack_b_below_median_line(t_stack *target, t_stack *stack_b, int stack_b_len)
 
 {
     target->a_cost = target->index; // stack_a_move = ra
@@ -84,7 +84,7 @@ void target_below_stack_b_above_median(t_stack *target, t_stack *stack_b, int st
 }   
 
 
-void stack_b_below_target_above_median(t_stack *target, t_stack *stack_b,int target_len)
+void stack_b_below_target_above_median_line(t_stack *target, t_stack *stack_b,int target_len)
 
 {
     target->a_cost = target_len - target->index; // stack_a_move = rra
