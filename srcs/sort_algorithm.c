@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:47:11 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/06 20:04:32 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/07 15:58:44 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -63,7 +63,7 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		cheapest_target = find_target_and_calculate_cost(stack_a, stack_b);
 		execute_move(cheapest_target, stack_a, stack_b);
 	}
-	
+	move_rank_one_up(stack_a);
 	// find target and cost
 
 	ft_printf("this is final state of stack_a: \n\n"); // start state
@@ -71,26 +71,4 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	ft_printf("this is final state of stack_b: \n\n"); // start state
 	ft_lstprint(*stack_b);                               // see stack
 	ft_printf("\n");
-	
-	
-	/*
-	
-ove(stack_a, stack_b, cheapest_node);
-	*/
-
-	// target_node = find_target_node_a(*stack_a, *stack_b);
-	// calculate cost
-
-	/*
-	
-	// Find the node with the cheapest cost
-    t_stack *cheapest_node = find_cheapest_node(*stack_a, *stack_b);
-
-    // Execute the move for the node with the cheapest cost
-    if (cheapest_node != NULL)
-    {
-        execute_move(stack_a, stack_b, cheapest_node);
-	}
-	
-	*/
 }

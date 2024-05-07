@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 19:43:43 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/06 21:34:43 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/07 15:22:09 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -131,4 +131,3 @@ void move_stack_b_below_target_above_median_line(t_stack cheapest_target, t_stac
         rotate_b(stack_b); 
     push_a(stack_b, stack_a);
 }
-

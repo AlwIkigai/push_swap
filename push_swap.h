@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:16:42 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/06 21:31:36 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/07 15:53:39 by asyed            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -91,6 +91,11 @@ void    move_both_above_median_line(t_stack cheapest_target,t_stack **stack_a, t
 void    move_both_below_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b);
 void    move_target_above_stack_b_below_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b);
 void    move_stack_b_below_target_above_median_line(t_stack cheapest_target, t_stack **stack_a, t_stack **stack_b);
+
+// final move
+
+t_stack *find_rank_one(t_stack **stack_a);
+void    move_rank_one_up(t_stack **stack_a);
 
 // push operation
 void    push(t_stack **origin, t_stack **destination);
