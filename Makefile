@@ -1,14 +1,15 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/14 12:07:44 by asyed             #+#    #+#              #
-#    Updated: 2024/05/07 16:41:40 by asyed            ###   ########.fr        #
+#    Created: 2024/05/07 17:36:21 by asyed             #+#    #+#              #
+#    Updated: 2024/05/07 17:36:22 by asyed            ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
+
 
 NAME		= push_swap
 
@@ -30,8 +31,7 @@ RM			= rm -f
 
 OBJS 		= $(addprefix $(SRCS_PATH), $(SRCS:%.c=%.o))
 
-# @ surpress output, $() is to specify while Makefile to invoke Make and -C indicate where the Makefile is at 
-$(NAME): $(OBJS)# this is target declaration, those below are the dependencies needed to build the file
+$(NAME): $(OBJS)
 	@$(MAKE) -C libft 
 	@$(MAKE) -C ft_printf
 	$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a ./ft_printf/ft_printf.a -o $(NAME)

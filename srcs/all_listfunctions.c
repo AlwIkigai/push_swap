@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   all_listfunctions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 18:05:21 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/06 21:31:56 by asyed            ###   ########.fr       */
+/*   Created: 2024/05/07 17:34:06 by asyed             #+#    #+#             */
+/*   Updated: 2024/05/07 17:34:09 by asyed            ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -51,14 +51,14 @@ void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 	current->next = new;
 }
 
-void    ft_lstprint(t_stack *lst)
+void	ft_lstprint(t_stack *lst)
 
 {
-    while (lst != NULL)
-    {
-        ft_printf("%d\n", lst->content);
-        lst = lst->next;
-    }
+	while (lst != NULL)
+	{
+		ft_printf("%d\n", lst->content);
+		lst = lst->next;
+	}
 }
 
 float	ft_lstsizeps(t_stack *lst)
@@ -69,11 +69,10 @@ float	ft_lstsizeps(t_stack *lst)
 	while (lst != NULL)
 	{
 		count++;
-		lst = lst ->next;
+		lst = lst->next;
 	}
 	return (count);
 }
-
 
 void	freenodes(t_stack **lst)
 {
@@ -83,7 +82,7 @@ void	freenodes(t_stack **lst)
 	current = *lst;
 	while (current)
 	{
-		next = current -> next;
+		next = current->next;
 		free(current);
 		current = next;
 	}
