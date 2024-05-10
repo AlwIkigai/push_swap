@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:36:15 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/08 13:47:25 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/08 16:13:13 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ float				ft_lstsizeps(t_stack *lst);
 
 // allocate memory space
 t_stack				**allocate_stack_a(int ac, char **av);
+void				assign_nodes_to_stack_a(t_stack **stack_a, int ac,
+						char **av);
 t_stack				**allocate_stack_b(void);
 
 // sort algorithm
