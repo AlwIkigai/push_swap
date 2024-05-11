@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:34:15 by asyed             #+#    #+#             */
-/*   Updated: 2024/05/08 15:34:28 by asyed            ###   ########.fr       */
+/*   Updated: 2024/05/11 16:46:56 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	notdigits(char **intargs)
 	while (intargs[array])
 	{
 		index = 0;
-		if (intargs[array][index] == '-' && intargs[array][index])
+		if (intargs[array][index] == '-' && intargs[array][index + 1])
 		{
 			index = 1;
 		}
